@@ -1,0 +1,15 @@
+{
+    "user": "ubuntu",
+    "key": "~/.ssh/2024-key.pem",
+    "Remote": {
+        "host": "db.novagne.com.br",
+        "port": 3306
+    },
+    "Local": {
+        "host": "127.0.0.1",
+        "port": 53306
+    },
+    "bastion": {
+        "host": "172.31.75.252"
+    }
+}

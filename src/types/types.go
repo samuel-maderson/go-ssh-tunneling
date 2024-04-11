@@ -1,7 +1,23 @@
 package types
 
-type Args struct {
-	Rhost string `arg:"-r,--rhost" help:"Remote MySQL host to access"`
-	Key   string `arg:"-k,--key" help:"Private SSH key to use for authentication"`
-	User  string `arg:"-u,--user" help:"SSH user to use for authentication"`
+type Remote struct {
+	Host string `json:"host"`
+	Port int    `json:"port"`
+}
+
+type Local struct {
+	Host string `json:"host"`
+	Port int    `json:"port"`
+}
+
+type Bastion struct {
+	Host string `json:"host"`
+}
+
+type Config struct {
+	User    string  `json:"user"`
+	Key     string  `json:"key"`
+	Remote  Remote  `json:"remote"`
+	Local   Local   `json:"local"`
+	Bastion Bastion `json:"bastion"`
 }
