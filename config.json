@@ -2,7 +2,7 @@
     "hosts": [
         {
             "user": "ubuntu",
-            "key": "/home/samuel/.ssh/2024-key.pem",
+            "key": "~/.ssh/2024-key.pem",
             "Remote": {
                 "host": "db.novagne.com.br",
                 "port": 3306
