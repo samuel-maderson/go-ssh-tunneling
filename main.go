@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"os/exec"
@@ -12,14 +11,7 @@ import (
 )
 
 var (
-	rhost         string
-	rport         int
-	lhost         string
-	lport         int
-	bastionhost   string
-	key           string
-	user          string
-	custom_config = types.Config{}
+	custom_config = types.HostJSON{}
 )
 
 func init() {
@@ -30,29 +22,25 @@ func init() {
 	}
 
 	json.Unmarshal(data, &custom_config)
-	rhost = custom_config.Remote.Host
-	rport = custom_config.Remote.Port
-	lhost = custom_config.Local.Host
-	lport = custom_config.Local.Port
-	bastionhost = custom_config.Bastion.Host
-	key = custom_config.Key
-	user = custom_config.User
 }
 
-func StartTunneling(rport int, rhost string, lhost string, lport int, key string) {
+func StartTunneling(rport int, rhost string, lhost string, lport int, key string, user string, bastionhost string) {
 
 	cmd := exec.Command("ssh", "-f", "-N", "-L", strconv.Itoa(lport)+":"+rhost+":"+strconv.Itoa(rport), "-i", key, user+"@"+bastionhost)
 
-	output, err := cmd.Output()
+	err := cmd.Start()
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	fmt.Println(string(output))
 }
 
 func main() {
 
-	log.Println("\033[1;32m[+]\033[0m Starting SSH Tunneling")
-	StartTunneling(rport, rhost, lhost, lport, key)
+	for _, host := range custom_config.Hosts {
+		log.Print("\033[1;32m[+]\033[0m Starting Tunneling for host: ", host.Remote.Host, ":", host.Remote.Port)
+		log.Print("\033[1;32m[+]\033[0m Listening on host: ", host.Local.Host, ":", host.Local.Port)
+		log.Print()
+		StartTunneling(host.Remote.Port, host.Remote.Host, host.Local.Host, host.Local.Port, host.Key, host.User, host.Bastion.Host)
+	}
 }

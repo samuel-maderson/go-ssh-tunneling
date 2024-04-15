@@ -1,29 +1,32 @@
-# README #
+# GO-SSH-TUNNELING #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+## HOW-TO ##
 
-### What is this repository for? ###
+### Installation ###
+Clone the project, then change the config.json according the type of host you will try to access.
+For example, I'll connect to a ssh host, so my config.json will look like this.
+```
+{
+    "user": "my-user",
+    "key": "~/.ssh/my-ssh-key",
+    "Remote": {
+        "host": "172.31.29.131",
+        "port": 22
+    },
+    "Local": {
+        "host": "127.0.0.1",
+        "port": 33306
+    },
+    "bastion": {
+        "host": "172.31.75.252"
+    }
+}
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+```
+### Description ###
 
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* User section: Your username on bastion host.
+* Key section: Your ssh private key that is related to your pubkey stored on bastion host.
+* Remote section: Change with the ip and port address you want to connect.
+* Local section: host attribute remains the same, port change to a local port that's available.
+* bastion section: don't change.

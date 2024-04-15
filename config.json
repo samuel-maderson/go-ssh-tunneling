@@ -1,15 +1,34 @@
 {
-    "user": "ubuntu",
-    "key": "~/.ssh/2024-key.pem",
-    "Remote": {
-        "host": "db.novagne.com.br",
-        "port": 3306
-    },
-    "Local": {
-        "host": "127.0.0.1",
-        "port": 53306
-    },
-    "bastion": {
-        "host": "172.31.75.252"
-    }
+    "hosts": [
+        {
+            "user": "ubuntu",
+            "key": "/home/samuel/.ssh/2024-key.pem",
+            "Remote": {
+                "host": "db.novagne.com.br",
+                "port": 3306
+            },
+            "Local": {
+                "host": "127.0.0.1",
+                "port": 53306
+            },
+            "bastion": {
+                "host": "172.31.75.252"
+            }
+        },
+        {
+            "user": "ubuntu",
+            "key": "~/.ssh/2024-key.pem",
+            "Remote": {
+                "host": "172.31.29.131",
+                "port": 22
+            },
+            "Local": {
+                "host": "127.0.0.1",
+                "port": 33306
+            },
+            "bastion": {
+                "host": "172.31.75.252"
+            }
+        }
+    ]   
 }

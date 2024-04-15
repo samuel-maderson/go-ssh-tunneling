@@ -14,10 +14,14 @@ type Bastion struct {
 	Host string `json:"host"`
 }
 
-type Config struct {
+type Host struct {
 	User    string  `json:"user"`
 	Key     string  `json:"key"`
 	Remote  Remote  `json:"remote"`
 	Local   Local   `json:"local"`
 	Bastion Bastion `json:"bastion"`
+}
+
+type HostJSON struct {
+	Hosts []Host `json:"hosts"`
 }
