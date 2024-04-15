@@ -10,7 +10,7 @@ For example, I'll connect to a ssh host, so my config.json will look like this.
     "user": "my-user",
     "key": "~/.ssh/my-ssh-key",
     "Remote": {
-        "host": "172.31.29.131",
+        "host": "192.168.10.1",
         "port": 22
     },
     "Local": {
@@ -18,7 +18,7 @@ For example, I'll connect to a ssh host, so my config.json will look like this.
         "port": 33306
     },
     "bastion": {
-        "host": "172.31.75.252"
+        "host": "192.168.10.10"
     }
 }
 
@@ -36,11 +36,11 @@ For example, I'll connect to a ssh host, so my config.json will look like this.
 Simple run the binary file as following:
 ```
 # Starting tunnels
-~/bitbucket.org/novagne/devops/go-ssh-tunneling (main)$ bin/go-ssh-tunneling-amd64-linux 
-2024/04/15 15:55:35 [+] Starting Tunneling for host: db.novagne.com.br:3306
+~/github.com/projects/go-ssh-tunneling (main)$ bin/go-ssh-tunneling-amd64-linux 
+2024/04/15 15:55:35 [+] Starting Tunneling for host: db.example.com:3306
 2024/04/15 15:55:35 [+] Listening on host: 127.0.0.1:53306
 2024/04/15 15:55:35 
-2024/04/15 15:55:35 [+] Starting Tunneling for host: 172.31.29.131:22
+2024/04/15 15:55:35 [+] Starting Tunneling for host: 192.168.10.1:22
 2024/04/15 15:55:35 [+] Listening on host: 127.0.0.1:33306
 2024/04/15 15:55:35 
 

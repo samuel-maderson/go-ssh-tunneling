@@ -1,10 +1,10 @@
 {
     "hosts": [
         {
-            "user": "ubuntu",
-            "key": "~/.ssh/2024-key.pem",
+            "user": "myuser",
+            "key": "~/.ssh/sample.pem",
             "Remote": {
-                "host": "db.novagne.com.br",
+                "host": "db.example.com",
                 "port": 3306
             },
             "Local": {
@@ -12,12 +12,12 @@
                 "port": 53306
             },
             "bastion": {
-                "host": "172.31.75.252"
+                "host": "192.168.10.10"
             }
         },
         {
-            "user": "ubuntu",
-            "key": "~/.ssh/2024-key.pem",
+            "user": "myuser",
+            "key": "~/.ssh/sample.pem",
             "Remote": {
                 "host": "172.31.29.131",
                 "port": 22
@@ -27,7 +27,7 @@
                 "port": 33306
             },
             "bastion": {
-                "host": "172.31.75.252"
+                "host": "192.168.10.10"
             }
         }
     ]   
