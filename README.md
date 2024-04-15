@@ -30,3 +30,29 @@ For example, I'll connect to a ssh host, so my config.json will look like this.
 * Remote section: Change with the ip and port address you want to connect.
 * Local section: host attribute remains the same, port change to a local port that's available.
 * bastion section: don't change.
+
+
+### Tunneling ###
+Simple run the binary file as following:
+```
+# Starting tunnels
+~/bitbucket.org/novagne/devops/go-ssh-tunneling (main)$ bin/go-ssh-tunneling-amd64-linux 
+2024/04/15 15:55:35 [+] Starting Tunneling for host: db.novagne.com.br:3306
+2024/04/15 15:55:35 [+] Listening on host: 127.0.0.1:53306
+2024/04/15 15:55:35 
+2024/04/15 15:55:35 [+] Starting Tunneling for host: 172.31.29.131:22
+2024/04/15 15:55:35 [+] Listening on host: 127.0.0.1:33306
+2024/04/15 15:55:35 
+
+
+# Showing listening ports to illustrate
+ss -t -n -l -p
+State            Recv-Q           Send-Q                     Local Address:Port                      Peer Address:Port          Process                                  
+LISTEN           0                128                            127.0.0.1:53306                          0.0.0.0:*              users:(("ssh",pid=5430,fd=5))           
+LISTEN           0                128                            127.0.0.1:33306                          0.0.0.0:*              users:(("ssh",pid=5429,fd=5))           
+LISTEN           0                4096                       127.0.0.53%lo:53                             0.0.0.0:*                                                      
+LISTEN           0                5                              127.0.0.1:631                            0.0.0.0:*                                                      
+LISTEN           0                128                                [::1]:53306                             [::]:*              users:(("ssh",pid=5430,fd=4))           
+LISTEN           0                128                                [::1]:33306                             [::]:*              users:(("ssh",pid=5429,fd=4))           
+LISTEN           0                5                                  [::1]:631                               [::]:*  
+```
